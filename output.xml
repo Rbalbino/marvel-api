@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.9.7 on win32)" generated="20210903 10:45:42.855" rpa="false" schemaversion="2">
+<suite id="s1" name="CreateCharacters" source="C:\projects\marvel-api\CreateCharacters.robot">
+<test id="s1-t1" name="Deve cadastrar um personagem">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{usuario}</var>
+<arg>email=rafael@hotmail.com</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210903 10:45:43.124" level="INFO">&amp;{usuario} = { email=rafael@hotmail.com }</msg>
+<status status="PASS" starttime="20210903 10:45:43.124" endtime="20210903 10:45:43.124"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>http://marvel.qaninja.academy/accounts</arg>
+<arg>json=${usuario}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20210903 10:45:43.641" level="INFO">POST Request : url=http://marvel.qaninja.academy/accounts 
+ path_url=/accounts 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '31', 'Content-Type': 'application/json'} 
+ body=b'{"email": "rafael@hotmail.com"}' 
+ </msg>
+<msg timestamp="20210903 10:45:43.642" level="INFO">POST Response : url=http://marvel.qaninja.academy/accounts 
+ status=200, reason=OK 
+ headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '41', 'Etag': 'W/"29-6a3tqqsDqfEarNCxDINSLYT9Zxw"', 'Date': 'Fri, 03 Sep 2021 13:45:44 GMT', 'Via': '1.1 vegur'} 
+ body={"client_key":"613227086af31f00169d2ad7"} 
+ </msg>
+<msg timestamp="20210903 10:45:43.642" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210903 10:45:43.125" endtime="20210903 10:45:43.642"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${client_key}</var>
+<arg>${response.json()}[client_key]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210903 10:45:43.646" level="INFO">${client_key} = 613227086af31f00169d2ad7</msg>
+<status status="PASS" starttime="20210903 10:45:43.643" endtime="20210903 10:45:43.646"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>client_key=${client_key}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210903 10:45:43.647" level="INFO">&amp;{headers} = { client_key=613227086af31f00169d2ad7 }</msg>
+<status status="PASS" starttime="20210903 10:45:43.646" endtime="20210903 10:45:43.647"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{personagem}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210903 10:45:43.649" level="INFO">&amp;{personagem} = { }</msg>
+<status status="PASS" starttime="20210903 10:45:43.649" endtime="20210903 10:45:43.649"/>
+</kw>
+<kw name="..">
+<arg>name=Thanos de Titã</arg>
+<arg>aliases=Thanos</arg>
+<arg>age=3000</arg>
+<arg>team=Ordem Negra</arg>
+<arg>active=False</arg>
+<msg timestamp="20210903 10:45:43.652" level="FAIL">No keyword with name '..' found.</msg>
+<status status="FAIL" starttime="20210903 10:45:43.652" endtime="20210903 10:45:43.652"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<arg>http://marvel.qaninja.academy/characters</arg>
+<arg>json=${personagem}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request.</doc>
+<status status="NOT RUN" starttime="20210903 10:45:43.654" endtime="20210903 10:45:43.654"/>
+</kw>
+<status status="FAIL" starttime="20210903 10:45:43.123" endtime="20210903 10:45:43.655">No keyword with name '..' found.</status>
+</test>
+<doc>Suite de Teste do cadastro de personagens na API da Marvel</doc>
+<status status="FAIL" starttime="20210903 10:45:42.856" endtime="20210903 10:45:43.661"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="CreateCharacters">CreateCharacters</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
