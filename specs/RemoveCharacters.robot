@@ -22,7 +22,7 @@ Deve remover um personagem pelo ID
 
     Status Should Be    404    ${response2}
 
-Não deve remover o personagem pelo ID
+Não deve encontrar o usuario pelo Id
 
     #${personagem_id}        Set Variable        6132b33f6af31f00169d3b50
     ${personagem_id}       Get Unique Id
