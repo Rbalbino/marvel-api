@@ -11,6 +11,13 @@ ${API_URL}    http://marvel.qaninja.academy
 
 
 *Keywords*
+Super Setup
+
+    [Arguments]         ${email}
+
+    Set Client Key      ${email}
+    Back To The Past
+
 Set Client Key
     [Arguments]         ${email}
 
@@ -28,4 +35,3 @@ Set Client Key
 Back To The Past
 
     DELETE      ${API_URL}/delorean     headers=${HEADERS}
-    

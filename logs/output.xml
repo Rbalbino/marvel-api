@@ -1,90 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1 (Python 3.9.7 on win32)" generated="20210903 18:01:39.230" rpa="false" schemaversion="2">
-<suite id="s1" name="CreateCharacters" source="C:\projects\Marvel-api\specs\CreateCharacters.robot">
-<kw name="Run Keywords" library="BuiltIn" type="SETUP">
-<arg>Set Client Key</arg>
-<arg>rafael@hotmail.com</arg>
-<arg>AND</arg>
-<arg>Back To The Past</arg>
-<doc>Executes all the given keywords in a sequence.</doc>
+<robot generator="Robot 4.1 (Python 3.9.7 on win32)" generated="20210904 10:38:29.943" rpa="false" schemaversion="2">
+<suite id="s1" name="SearchCharacters" source="C:\projects\Marvel-api\specs\SearchCharacters.robot">
+<kw name="Super Setup" library="Base" type="SETUP">
+<arg>rafael@msn.com</arg>
 <kw name="Set Client Key" library="Base">
-<arg>rafael@hotmail.com</arg>
+<arg>${email}</arg>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>&amp;{usuario}</var>
 <arg>email=${email}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20210903 18:01:39.452" level="INFO">&amp;{usuario} = { email=rafael@hotmail.com }</msg>
-<status status="PASS" starttime="20210903 18:01:39.451" endtime="20210903 18:01:39.452"/>
+<msg timestamp="20210904 10:38:30.118" level="INFO">&amp;{usuario} = { email=rafael@msn.com }</msg>
+<status status="PASS" starttime="20210904 10:38:30.117" endtime="20210904 10:38:30.118"/>
 </kw>
 <kw name="POST" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${API_URL}/accounts</arg>
 <arg>json=${usuario}</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20210903 18:01:39.989" level="INFO">POST Request : url=http://marvel.qaninja.academy/accounts 
+<msg timestamp="20210904 10:38:30.623" level="INFO">POST Request : url=http://marvel.qaninja.academy/accounts 
  path_url=/accounts 
- headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '31', 'Content-Type': 'application/json'} 
- body=b'{"email": "rafael@hotmail.com"}' 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '27', 'Content-Type': 'application/json'} 
+ body=b'{"email": "rafael@msn.com"}' 
  </msg>
-<msg timestamp="20210903 18:01:39.989" level="INFO">POST Response : url=http://marvel.qaninja.academy/accounts 
+<msg timestamp="20210904 10:38:30.623" level="INFO">POST Response : url=http://marvel.qaninja.academy/accounts 
  status=200, reason=OK 
- headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '41', 'Etag': 'W/"29-6a3tqqsDqfEarNCxDINSLYT9Zxw"', 'Date': 'Fri, 03 Sep 2021 21:01:40 GMT', 'Via': '1.1 vegur'} 
- body={"client_key":"613227086af31f00169d2ad7"} 
+ headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '41', 'Etag': 'W/"29-BMdpMNDRirUmM0ruA1RXDHgrhxU"', 'Date': 'Sat, 04 Sep 2021 13:38:31 GMT', 'Via': '1.1 vegur'} 
+ body={"client_key":"6133739fa382520016a4b1e2"} 
  </msg>
-<msg timestamp="20210903 18:01:39.990" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20210903 18:01:39.452" endtime="20210903 18:01:39.990"/>
+<msg timestamp="20210904 10:38:30.623" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210904 10:38:30.118" endtime="20210904 10:38:30.623"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${client_key}</var>
 <arg>${response.json()}[client_key]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20210903 18:01:39.991" level="INFO">${client_key} = 613227086af31f00169d2ad7</msg>
-<status status="PASS" starttime="20210903 18:01:39.990" endtime="20210903 18:01:39.991"/>
+<msg timestamp="20210904 10:38:30.626" level="INFO">${client_key} = 6133739fa382520016a4b1e2</msg>
+<status status="PASS" starttime="20210904 10:38:30.624" endtime="20210904 10:38:30.626"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>&amp;{HEADERS}</var>
 <arg>client_key=${client_key}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20210903 18:01:39.992" level="INFO">&amp;{HEADERS} = { client_key=613227086af31f00169d2ad7 }</msg>
-<status status="PASS" starttime="20210903 18:01:39.991" endtime="20210903 18:01:39.992"/>
+<msg timestamp="20210904 10:38:30.627" level="INFO">&amp;{HEADERS} = { client_key=6133739fa382520016a4b1e2 }</msg>
+<status status="PASS" starttime="20210904 10:38:30.627" endtime="20210904 10:38:30.627"/>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <arg>${HEADERS}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<msg timestamp="20210903 18:01:39.992" level="INFO">${HEADERS} = {'client_key': '613227086af31f00169d2ad7'}</msg>
-<status status="PASS" starttime="20210903 18:01:39.992" endtime="20210903 18:01:39.992"/>
+<msg timestamp="20210904 10:38:30.628" level="INFO">${HEADERS} = {'client_key': '6133739fa382520016a4b1e2'}</msg>
+<status status="PASS" starttime="20210904 10:38:30.627" endtime="20210904 10:38:30.628"/>
 </kw>
-<status status="PASS" starttime="20210903 18:01:39.451" endtime="20210903 18:01:39.993"/>
+<status status="PASS" starttime="20210904 10:38:30.117" endtime="20210904 10:38:30.629"/>
 </kw>
 <kw name="Back To The Past" library="Base">
 <kw name="DELETE" library="RequestsLibrary">
 <arg>${API_URL}/delorean</arg>
 <arg>headers=${HEADERS}</arg>
 <doc>Sends a DELETE request.</doc>
-<msg timestamp="20210903 18:01:40.333" level="INFO">DELETE Request : url=http://marvel.qaninja.academy/delorean 
+<msg timestamp="20210904 10:38:30.976" level="INFO">DELETE Request : url=http://marvel.qaninja.academy/delorean 
  path_url=/delorean 
- headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'client_key': '613227086af31f00169d2ad7', 'Content-Length': '0'} 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'client_key': '6133739fa382520016a4b1e2', 'Content-Length': '0'} 
  body=None 
  </msg>
-<msg timestamp="20210903 18:01:40.334" level="INFO">DELETE Response : url=http://marvel.qaninja.academy/delorean 
+<msg timestamp="20210904 10:38:30.976" level="INFO">DELETE Response : url=http://marvel.qaninja.academy/delorean 
  status=200, reason=OK 
- headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '31', 'Etag': 'W/"1f-ImqlboUfbv1n1FbEV48J/4RvhGg"', 'Date': 'Fri, 03 Sep 2021 21:01:40 GMT', 'Via': '1.1 vegur'} 
+ headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '31', 'Etag': 'W/"1f-ImqlboUfbv1n1FbEV48J/4RvhGg"', 'Date': 'Sat, 04 Sep 2021 13:38:31 GMT', 'Via': '1.1 vegur'} 
  body={"message":"Avengers Assemble"} 
  </msg>
-<status status="PASS" starttime="20210903 18:01:39.994" endtime="20210903 18:01:40.335"/>
+<status status="PASS" starttime="20210904 10:38:30.630" endtime="20210904 10:38:30.976"/>
 </kw>
-<status status="PASS" starttime="20210903 18:01:39.993" endtime="20210903 18:01:40.336"/>
+<status status="PASS" starttime="20210904 10:38:30.629" endtime="20210904 10:38:30.977"/>
 </kw>
-<status status="PASS" starttime="20210903 18:01:39.451" endtime="20210903 18:01:40.337"/>
+<status status="PASS" starttime="20210904 10:38:30.117" endtime="20210904 10:38:30.977"/>
 </kw>
-<test id="s1-t1" name="Deve cadastrar um personagem">
-<kw name="Factory Thanos" library="Thanos">
+<test id="s1-t1" name="Deve buscar um personagem pelo ID">
+<kw name="Factory Logan" library="Xmen">
 <var>${personagem}</var>
-<msg timestamp="20210903 18:01:40.338" level="INFO">${personagem} = {'name': 'Thanos de Titã', 'aliases': 'Thanos', 'age': 3000, 'team': 'Ordem Negra', 'active': False}</msg>
-<status status="PASS" starttime="20210903 18:01:40.338" endtime="20210903 18:01:40.338"/>
+<msg timestamp="20210904 10:38:30.983" level="INFO">${personagem} = {'name': 'Logan', 'aliases': 'Wolverine', 'age': 100, 'team': 'X-men', 'active': True}</msg>
+<status status="PASS" starttime="20210904 10:38:30.979" endtime="20210904 10:38:30.983"/>
 </kw>
 <kw name="POST New Character" library="characters">
-<var>${response}</var>
+<var>${logan}</var>
 <arg>${personagem}</arg>
 <kw name="POST" library="RequestsLibrary">
 <var>${response}</var>
@@ -93,113 +89,103 @@
 <arg>headers=${HEADERS}</arg>
 <arg>expected_status=any</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20210903 18:01:40.669" level="INFO">POST Request : url=http://marvel.qaninja.academy/characters 
+<msg timestamp="20210904 10:38:31.323" level="INFO">POST Request : url=http://marvel.qaninja.academy/characters 
  path_url=/characters 
- headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'client_key': '613227086af31f00169d2ad7', 'Content-Length': '105', 'Content-Type': 'application/json'} 
- body=b'{"name": "Thanos de Tit\\u00e3", "aliases": "Thanos", "age": 3000, "team": "Ordem Negra", "active": false}' 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'client_key': '6133739fa382520016a4b1e2', 'Content-Length': '86', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Logan", "aliases": "Wolverine", "age": 100, "team": "X-men", "active": true}' 
  </msg>
-<msg timestamp="20210903 18:01:40.670" level="INFO">POST Response : url=http://marvel.qaninja.academy/characters 
+<msg timestamp="20210904 10:38:31.324" level="INFO">POST Response : url=http://marvel.qaninja.academy/characters 
  status=200, reason=OK 
- headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '160', 'Etag': 'W/"a0-5VpU67xz+Z+BZjGigU1lWjHBqHw"', 'Date': 'Fri, 03 Sep 2021 21:01:41 GMT', 'Via': '1.1 vegur'} 
- body={"_id":"61328d356af31f00169d32c7","name":"Thanos de Titã","age":3000,"aliases":"Thanos","team":"Ordem Negra","active":false,"owner":"613227086af31f00169d2ad7"} 
+ headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '145', 'Etag': 'W/"91-j0et1aJMil8Wvl+i3TFDqiBU7OU"', 'Date': 'Sat, 04 Sep 2021 13:38:31 GMT', 'Via': '1.1 vegur'} 
+ body={"_id":"613376d7a382520016a4b1f1","name":"Logan","age":100,"aliases":"Wolverine","team":"X-men","active":true,"owner":"6133739fa382520016a4b1e2"} 
  </msg>
-<msg timestamp="20210903 18:01:40.670" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20210903 18:01:40.340" endtime="20210903 18:01:40.670"/>
+<msg timestamp="20210904 10:38:31.324" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210904 10:38:30.990" endtime="20210904 10:38:31.324"/>
 </kw>
-<msg timestamp="20210903 18:01:40.671" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20210903 18:01:40.339" endtime="20210903 18:01:40.671"/>
+<msg timestamp="20210904 10:38:31.325" level="INFO">${logan} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210904 10:38:30.989" endtime="20210904 10:38:31.325"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${logan_id}</var>
+<arg>${logan.json()}[_id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210904 10:38:31.329" level="INFO">${logan_id} = 613376d7a382520016a4b1f1</msg>
+<status status="PASS" starttime="20210904 10:38:31.326" endtime="20210904 10:38:31.329"/>
+</kw>
+<kw name="Get Character By Id" library="characters">
+<var>${response}</var>
+<arg>${logan_id}</arg>
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${API_URL}/characters/${Character_id}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20210904 10:38:31.689" level="INFO">GET Request : url=http://marvel.qaninja.academy/characters/613376d7a382520016a4b1f1 
+ path_url=/characters/613376d7a382520016a4b1f1 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'client_key': '6133739fa382520016a4b1e2'} 
+ body=None 
+ </msg>
+<msg timestamp="20210904 10:38:31.689" level="INFO">GET Response : url=http://marvel.qaninja.academy/characters/613376d7a382520016a4b1f1 
+ status=200, reason=OK 
+ headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '145', 'Etag': 'W/"91-j0et1aJMil8Wvl+i3TFDqiBU7OU"', 'Date': 'Sat, 04 Sep 2021 13:38:32 GMT', 'Via': '1.1 vegur'} 
+ body={"_id":"613376d7a382520016a4b1f1","name":"Logan","age":100,"aliases":"Wolverine","team":"X-men","active":true,"owner":"6133739fa382520016a4b1e2"} 
+ </msg>
+<msg timestamp="20210904 10:38:31.690" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210904 10:38:31.341" endtime="20210904 10:38:31.690"/>
+</kw>
+<msg timestamp="20210904 10:38:31.691" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210904 10:38:31.340" endtime="20210904 10:38:31.691"/>
 </kw>
 <kw name="Status Should Be" library="RequestsLibrary">
 <arg>200</arg>
 <arg>${response}</arg>
 <doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20210903 18:01:40.671" endtime="20210903 18:01:40.671"/>
-</kw>
-<status status="PASS" starttime="20210903 18:01:40.337" endtime="20210903 18:01:40.672"/>
-</test>
-<test id="s1-t2" name="Não deve Cadastrar com o mesmo nome">
-<kw name="Factory Deadpool" library="Deadpool">
-<var>${personagem}</var>
-<msg timestamp="20210903 18:01:40.675" level="INFO">${personagem} = {'name': 'Wade Wilson', 'aliases': 'Deadpool', 'age': 40, 'team': 'X Force', 'active': True}</msg>
-<status status="PASS" starttime="20210903 18:01:40.675" endtime="20210903 18:01:40.675"/>
-</kw>
-<kw name="POST New Character" library="characters">
-<arg>${personagem}</arg>
-<kw name="POST" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${API_URL}/characters</arg>
-<arg>json=${payload}</arg>
-<arg>headers=${HEADERS}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request.</doc>
-<msg timestamp="20210903 18:01:41.016" level="INFO">POST Request : url=http://marvel.qaninja.academy/characters 
- path_url=/characters 
- headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'client_key': '613227086af31f00169d2ad7', 'Content-Length': '92', 'Content-Type': 'application/json'} 
- body=b'{"name": "Wade Wilson", "aliases": "Deadpool", "age": 40, "team": "X Force", "active": true}' 
- </msg>
-<msg timestamp="20210903 18:01:41.017" level="INFO">POST Response : url=http://marvel.qaninja.academy/characters 
- status=200, reason=OK 
- headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '151', 'Etag': 'W/"97-p3+eOrBwt8Svew0N4KQqqLYYG8s"', 'Date': 'Fri, 03 Sep 2021 21:01:41 GMT', 'Via': '1.1 vegur'} 
- body={"_id":"61328d356af31f00169d32cb","name":"Wade Wilson","age":40,"aliases":"Deadpool","team":"X Force","active":true,"owner":"613227086af31f00169d2ad7"} 
- </msg>
-<msg timestamp="20210903 18:01:41.017" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20210903 18:01:40.677" endtime="20210903 18:01:41.017"/>
-</kw>
-<status status="PASS" starttime="20210903 18:01:40.676" endtime="20210903 18:01:41.018"/>
-</kw>
-<kw name="POST New Character" library="characters">
-<var>${response}</var>
-<arg>${personagem}</arg>
-<kw name="POST" library="RequestsLibrary">
-<var>${response}</var>
-<arg>${API_URL}/characters</arg>
-<arg>json=${payload}</arg>
-<arg>headers=${HEADERS}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request.</doc>
-<msg timestamp="20210903 18:01:41.351" level="INFO">POST Request : url=http://marvel.qaninja.academy/characters 
- path_url=/characters 
- headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'client_key': '613227086af31f00169d2ad7', 'Content-Length': '92', 'Content-Type': 'application/json'} 
- body=b'{"name": "Wade Wilson", "aliases": "Deadpool", "age": 40, "team": "X Force", "active": true}' 
- </msg>
-<msg timestamp="20210903 18:01:41.351" level="INFO">POST Response : url=http://marvel.qaninja.academy/characters 
- status=409, reason=Conflict 
- headers={'Server': 'Cowboy', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '39', 'Etag': 'W/"27-u8CjYCAAYHK/l+EQR0JyKi0LQGU"', 'Date': 'Fri, 03 Sep 2021 21:01:41 GMT', 'Via': '1.1 vegur'} 
- body={"error":"Character already exists :("} 
- </msg>
-<msg timestamp="20210903 18:01:41.351" level="INFO">${response} = &lt;Response [409]&gt;</msg>
-<status status="PASS" starttime="20210903 18:01:41.020" endtime="20210903 18:01:41.351"/>
-</kw>
-<msg timestamp="20210903 18:01:41.352" level="INFO">${response} = &lt;Response [409]&gt;</msg>
-<status status="PASS" starttime="20210903 18:01:41.018" endtime="20210903 18:01:41.352"/>
-</kw>
-<kw name="Status Should Be" library="RequestsLibrary">
-<arg>409</arg>
-<arg>${response}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20210903 18:01:41.353" endtime="20210903 18:01:41.353"/>
+<status status="PASS" starttime="20210904 10:38:31.693" endtime="20210904 10:38:31.694"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
-<arg>${response.json()}[error]</arg>
-<arg>Character already exists :(</arg>
+<arg>${logan.json()}[name]</arg>
+<arg>${personagem}[name]</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20210903 18:01:41.354" endtime="20210903 18:01:41.355"/>
+<status status="PASS" starttime="20210904 10:38:31.695" endtime="20210904 10:38:31.704"/>
 </kw>
-<tag>dup</tag>
-<status status="PASS" starttime="20210903 18:01:40.674" endtime="20210903 18:01:41.355"/>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${logan.json()}[aliases]</arg>
+<arg>${personagem}[aliases]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20210904 10:38:31.707" endtime="20210904 10:38:31.709"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${logan.json()}[age]</arg>
+<arg>${personagem}[age]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20210904 10:38:31.710" endtime="20210904 10:38:31.711"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${logan.json()}[team]</arg>
+<arg>${personagem}[team]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20210904 10:38:31.714" endtime="20210904 10:38:31.721"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${logan.json()}[active]</arg>
+<arg>${personagem}[active]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20210904 10:38:31.722" endtime="20210904 10:38:31.723"/>
+</kw>
+<status status="PASS" starttime="20210904 10:38:30.977" endtime="20210904 10:38:31.723"/>
 </test>
-<doc>Suite de Teste do cadastro de personagens na API da Marvel</doc>
-<status status="PASS" starttime="20210903 18:01:39.237" endtime="20210903 18:01:41.358"/>
+<doc>Suite de Teste de busca de personagens na API da Marvel</doc>
+<status status="PASS" starttime="20210904 10:38:29.947" endtime="20210904 10:38:31.724"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">dup</stat>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="CreateCharacters">CreateCharacters</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="SearchCharacters">SearchCharacters</stat>
 </suite>
 </statistics>
 <errors>

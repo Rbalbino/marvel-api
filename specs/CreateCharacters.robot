@@ -5,8 +5,7 @@ Resource    ${EXECDIR}/resources/Base.robot
 Library     ${EXECDIR}/resources/factories/Thanos.py
 Library     ${EXECDIR}/resources/factories/Deadpool.py
 
-Suite Setup     Run Keywords     Set Client Key  rafael@hotmail.com
-...             AND              Back To The Past
+Suite Setup     Super Setup     rafael@hotmail.com
 
 *Test Cases*
 Deve cadastrar um personagem
@@ -26,3 +25,4 @@ Não deve Cadastrar com o mesmo nome
 
     Status Should Be    409                          ${response}
     Should Be Equal     ${response.json()}[error]    Character already exists :(
+
